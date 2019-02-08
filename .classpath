@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="spring-boot/src/main/java"/>
+	<classpathentry kind="src" path="spring-boot/src/test/java"/>
+	<classpathentry kind="src" path="spring-mvc/src/main/java"/>
+	<classpathentry kind="src" path="SpringBootApacheKafkaHelloWorld/src/main/java"/>
+	<classpathentry kind="lib" path="spring-boot/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="SpringBootApacheKafkaHelloWorld/target/classes"/>
+</classpath>

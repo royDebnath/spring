@@ -1,4 +1,16 @@
-insert into user values(001, '1987-08-17', 'DEBNATH ROY');
+/*CREATE TABLE IF NOT EXISTS user
+   (
+   id int,
+   name varchar(30),
+   birthDate date
+   );
+
+   CREATE TABLE IF NOT EXISTS post
+   (
+   id int,
+   description varchar(30)   );*/
+
+insert into user values(001, '1987-08-17', 'RATAN ROY');
 insert into user values(002, '1986-05-27', 'NITIN AGARWAL');
 insert into user values(003, '1987-08-14', 'PALLAB KARMAKAR');
 insert into user values(004, '1989-03-23', 'SIDDHARTH SHARMA');
@@ -7,7 +19,7 @@ insert into user values(006, '1986-08-13', 'DEBDEEP SARKAR');
 insert into user values(007, '1985-09-21', 'SUBHRAJIT CHATTERJEE');
 insert into post values(101, 'Siddharths Post', 004);
 
-insert into Department values(701, 'Bangalore', 'HR');
+/*insert into Department values(701, 'Bangalore', 'HR');
 insert into Department values(702, 'Mumbai', 'TEST');
 insert into Department values(703, 'Delhi', 'DEVELOP');
 
@@ -31,7 +43,7 @@ insert into Address values(306, 'Salt Lake-Kolkata', 119);
 insert into Address values(307, 'Iblur-Bangalore', 917);
 insert into Address values(308, 'Spice Garden-Bangalore', 918);
 insert into Address values(309, 'Bagmane-Bangalore', 919);
-
+*/
 
 
 --insert into Employee values('employee', 017, 'debnath.roy@company.com', 'Debnath', 'Roy', null, null, null, null, 701);

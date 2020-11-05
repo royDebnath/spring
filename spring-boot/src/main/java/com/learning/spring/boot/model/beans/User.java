@@ -3,23 +3,25 @@ package com.learning.spring.boot.model.beans;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class User {
 	
+	/*@GeneratedValue(strategy= GenerationType.AUTO)*/
 	@Id
-	@GeneratedValue
 	private Integer id;
 	private String name;
 	private Date birthDate;
 	
 	@OneToMany(mappedBy="user") //This means this field will be mapped by the "user" field present in Post
 	private List<Post> posts;
-
+/*
+	{
+		"id" : 1051,
+		"name" : "John Doe",
+		"birthDate" : "1986-08-12T18:30:00.000+0000"
+	}*/
 	/*
 	 * This default no argument constructor had to be written as there is
 	 * already a custom constructor present. while executing post requests

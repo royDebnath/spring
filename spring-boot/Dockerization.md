@@ -4,14 +4,17 @@ Running the app:
 
 Setting up Mysql:
 -----------------
+
 docker pull mysql
 
 docker run --name mysql-roydebnath -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=roydebnath -e MYSQL_USER=roydebnath -e MYSQL_PASSWORD=roydebnath -d mysql:5.6
 
 check mysql container logs:
+
 $ docker logs --follow mysql-roydebnath
 
 Wait for mysql to start:
+
 2020-11-27 15:09:52 1 [Warning] 'proxies_priv' entry '@ root@c0d4bb5e7688' ignored in --skip-name-resolve mode.
 2020-11-27 15:09:52 1 [Note] Event Scheduler: Loaded 0 events
 2020-11-27 15:09:52 1 [Note] mysqld: ready for connections.
@@ -23,7 +26,7 @@ Setting up Spring app:
 
 docker build . -t spring-roydebnath:1.7
 
-docker run -p 3585:3585 --name spring-roydebnath --link mysql-roydebnath:mysql -d spring-roydebnath:1.7 -- linked the mysql image
+docker run -p 3585:3585 --name spring-roydebnath --link mysql-roydebnath:mysql -d spring-roydebnath:1.7
 
 docker logs --follow spring-roydebnath
 

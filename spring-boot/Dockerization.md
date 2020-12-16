@@ -1,10 +1,44 @@
 
-Mysql Image run:
-================
+Running the app:
+=================
+
+Setting up Mysql:
+-----------------
 
 docker pull mysql
 
 docker run --name mysql-roydebnath -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=roydebnath -e MYSQL_USER=roydebnath -e MYSQL_PASSWORD=roydebnath -d mysql:5.6
+
+check mysql container logs:
+
+$ docker logs --follow mysql-roydebnath
+
+Wait for mysql to start:
+
+2020-11-27 15:09:52 1 [Warning] 'proxies_priv' entry '@ root@c0d4bb5e7688' ignored in --skip-name-resolve mode.
+2020-11-27 15:09:52 1 [Note] Event Scheduler: Loaded 0 events
+2020-11-27 15:09:52 1 [Note] mysqld: ready for connections.
+Version: '5.6.50'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+
+
+Setting up Spring app:
+----------------------
+
+docker build . -t spring-roydebnath:1.7
+
+docker run -p 3585:3585 --name spring-roydebnath --link mysql-roydebnath:mysql -d spring-roydebnath:1.7
+
+docker logs --follow spring-roydebnath
+
+access url : http://localhost:3585/jpa/users
+
+Accessing Mysql db:
+-------------------
+
+docker pull phpmyadmin/phpmyadmin
+
+docker run --name mysqlphp -d --link mysql-roydebnath:db -p 8089:80 phpmyadmin/phpmyadmin
+
 
 pom.xml
 ===================
@@ -64,24 +98,5 @@ FROM openjdk:8
 ADD target/spring-roydebnath.jar spring-roydebnath.jar ---------first jar name is the one created in target, second name is the one docker would create image
 EXPOSE 3585 ---------------------------------------------------------exposigng the port
 ENTRYPOINT ["java", "-jar", "spring-roydebnath.jar"]
-
-
-Running the app:
-=================
-
-docker build . -t spring-roydebnath:1.7
-
-docker run -p 3585:3585 --name spring-roydebnath --link mysql-roydebnath:mysql -d spring-roydebnath:1.7 -- linked the mysql image
-
-docker logs --follow spring-roydebnath
-
-access url : http://localhost:3585/jpa/users
-
-Accessing Mysql db:
-====================
-
-docker pull phpmyadmin/phpmyadmin
-
-docker run --name mysqlphp -d --link mysql-roydebnath:db -p 8089:80 phpmyadmin/phpmyadmin
 
 Access : http://localhost:8089/ (mysql db credentials)
